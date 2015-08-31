@@ -77,7 +77,7 @@ sites_data = csv.DictReader(StringIO(sites_raw_data))
 # Lista de embalses específicos por nombre
 # e.g. ['Carite','Patillas']
 # Deje lista vacía para incluir todos los embalses.
-only_this_sites = []
+only_these_sites = []
 
 # Fechas de interés
 today = datetime.now().date()
@@ -100,8 +100,8 @@ print u"%-15s %-8s %-8s %-16s %-12s  %-8s %-8s %-8s %-8s %-8s" % ("Embalse", "Ni
 
 for site in sites_data:
     # ¿Existe una lista específica de embalses?
-    if only_this_sites:
-        if site["nombre"] in only_sites:
+    if only_these_sites:
+        if site["nombre"] in only_these_sites:
             site_ID = site["siteID"]
         else:
             continue
