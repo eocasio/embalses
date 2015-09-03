@@ -8,3 +8,7 @@ Wrote this script during storm Erika (8/27/2015) when the embalsepr application 
 Written for Python 2.7.x.  Requires the `requests` module.
 
 GPL licensed.
+
+## Go port
+
+There is a port to the Go language thanks to @jecolon: https://github.com/jecolon/embalses
