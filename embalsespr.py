@@ -120,10 +120,18 @@ for site in sites_data:
         # Extraer todas las filas de datos ignorando comentarios
         rows = [row for row in levels_data if row[0][0] != '#']
         
-        # Obtener nivel del embalse hace 24 horas (aproximadamente)
-        # Cada fila representa un intervalo de 15 minutos.
-        # La fila 96 intervalos atrás contiene ese valor (aproximadamente).
-        first_row = rows[-97]
+        # TODO: Utilizar fechas de datos para determinar con mayor exactitud
+        # las lecturas que deben ser consideradas.
+        #
+        
+        # En caso de que no haya suficientes datos, e.g. se daña un sensor.
+        if len(rows) < 97:
+            first_row = rows[2]
+        else:        
+            # Obtener nivel del embalse hace 24 horas (aproximadamente)
+            # Cada fila representa un intervalo de 15 minutos.
+            # La fila 96 intervalos atrás contiene ese valor (aproximadamente).
+            first_row = rows[-97]
         
         first_level = float(first_row[4])
         
@@ -156,7 +164,8 @@ for site in sites_data:
 
 
     except Exception, e:
-        print u"%s = N/A" % site["nombre"]
+        print u"%s = N/A" % site["nombre"], str(e)
+
         
         # Para ver errores específicos:           
         # print "Error: %s" % str(e)
